@@ -9,7 +9,7 @@ resource "random_pet" "name1" {
 }
 
 resource "random_pet" "name2" {
- length    = "5"
+ length    = "6"
  separator = "-"
 }
 
