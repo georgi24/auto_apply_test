@@ -12,7 +12,7 @@ variable dummy {
 
 resource null_resource echo_dummy {
   provisioner local-exec {
-    command = "echo Variabledd is ${var.dummy}"
+    command = "echo Variableddd is ${var.dummy}"
   }
 
   triggers = {
