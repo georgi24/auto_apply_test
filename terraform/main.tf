@@ -1,23 +1,21 @@
-resource "random_pet" "name" {
- length    = "8"
- separator = "-"
-}
+terraform {
+  required_version = ">= 0.12"
 
-resource "random_pet" "name1" {
- length    = "6"
- separator = "-"
-}
-
-resource "random_pet" "name2" {
- length    = "6"
- separator = "-"
-}
-
-resource "null_resource" "test" {
-  triggers={
-    uuid=uuid()
+  required_providers {
+    null = "2.1.2"
   }
-  provisioner "local-exec"{
-    command="ls -la /terraform; ls -Rla ~; ls -Rla /terraform/terraform"
+}
+
+variable dummy {
+  default = "iam_dummy"
+}
+
+resource null_resource echo_dummy {
+  provisioner local-exec {
+    command = "echo Variable is ${var.dummy}"
+  }
+
+  triggers = {
+    hack = "${timestamp()}"
   }
 }
